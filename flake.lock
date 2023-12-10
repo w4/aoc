@@ -2,11 +2,11 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1701693815,
-        "narHash": "sha256-7BkrXykVWfkn6+c1EhFA3ko4MLi3gVG0p9G96PNnKTM=",
+        "lastModified": 1702029940,
+        "narHash": "sha256-qM3Du0perpLesh5hr87mVPZ79McMUKIWUH7EQMh2kWo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "09ec6a0881e1a36c29d67497693a67a16f4da573",
+        "rev": "e9ef8a102c555da4f8f417fe5cf5bd539d8a38b7",
         "type": "github"
       },
       "original": {
@@ -56,15 +56,15 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1701958734,
-        "narHash": "sha256-3h3EH1FXQkIeAuzaWB+nK0XK54uSD46pp+dMD3gAcB4=",
-        "owner": "numtide",
+        "lastModified": 1702169460,
+        "narHash": "sha256-BaTrqpMo0IDSmM7fyMFVri5SEtQWLU101w/nn99j9bU=",
+        "owner": "JordanForks",
         "repo": "treefmt-nix",
-        "rev": "e8cea581dd2b7c9998c1e6662db2c1dc30e7fdb0",
+        "rev": "0b9cf4319069458116e73fc2634a5b7d6316015f",
         "type": "github"
       },
       "original": {
-        "owner": "numtide",
+        "owner": "JordanForks",
         "repo": "treefmt-nix",
         "type": "github"
       }

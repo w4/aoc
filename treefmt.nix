@@ -8,5 +8,6 @@
     nixpkgs-fmt.enable = true;
     statix.enable = true;
     rustfmt.enable = true;
+    fprettify.enable = true;
   };
 }

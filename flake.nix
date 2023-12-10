@@ -1,6 +1,6 @@
 {
   inputs = {
-    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.url = "github:JordanForks/treefmt-nix";
   };
 
   outputs = { self, nixpkgs, systems, treefmt-nix }:
