@@ -9,5 +9,6 @@
     statix.enable = true;
     rustfmt.enable = true;
     fprettify.enable = true;
+    jsonnetfmt.enable = true;
   };
 }
