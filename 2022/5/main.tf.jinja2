@@ -1,0 +1,54 @@
+{% set maxRecursion = 501 %}
+
+locals {
+  input         = file("input")
+  inputParts    = split("\n\n", local.input)
+  blocks        = split("\n", local.inputParts[0])
+  parsedBlocks  = [for s in [for s in slice(local.blocks, 0, length(local.blocks) - 1) : split("", s)] : [for j in range(1, length(s), 4) : s[j]]]
+  stackedBlocks = [for i in range(length(local.parsedBlocks[0])) : [for j in range(length(local.parsedBlocks)) : local.parsedBlocks[j][i] if local.parsedBlocks[j][i] != " "]]
+  instructions  = split("\n", replace(replace(replace(local.inputParts[1], "move ", ""), " from ", ","), " to ", ","))
+  output = {
+    "part1" = join("", [for v in module.executor-{{ maxRecursion - 1 }}.finalBlocks : v[0]]),
+    "part2" = join("", [for v in module.executor-non-reversed-{{ maxRecursion - 1 }}.finalBlocks : v[0]])
+  }
+}
+
+# you'll have to forgive me for this blasphemy. hashicorp did everything in their power
+# to prevent any forms of recursion, and i can't be bothered copy and pasting this block
+# 1000 times.
+{% for i in range(maxRecursion) %}
+module "executor-{{ i }}" {
+  source = "./executor"
+
+  {% if i == 0 %}
+    stackedBlocks = local.stackedBlocks
+    instructions = local.instructions
+  {% else %}
+    stackedBlocks = module.executor-{{ i - 1 }}.finalBlocks
+    instructions = module.executor-{{ i - 1 }}.remainingInstructions
+  {% endif %}
+
+  reverse = true
+}
+
+module "executor-non-reversed-{{ i }}" {
+  source = "./executor"
+
+  {% if i == 0 %}
+    stackedBlocks = local.stackedBlocks
+    instructions = local.instructions
+  {% else %}
+    stackedBlocks = module.executor-non-reversed-{{ i - 1 }}.finalBlocks
+    instructions = module.executor-non-reversed-{{ i - 1 }}.remainingInstructions
+  {% endif %}
+
+  reverse = false
+}
+{% endfor %}
+
+resource "local_file" "out" {
+  filename = var.outpath
+  content  = jsonencode(local.output)
+}
+
+variable "outpath" {}
