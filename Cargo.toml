@@ -1,0 +1,25 @@
+[package]
+name = "aoc2023"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+arrayvec = "0.7"
+rangemap = "1.4"
+strum = { version = "0.25", features = ["derive"] }
+nom = "7"
+itertools = "0.12"
+
+[[bin]]
+name = "aoc2023-12"
+path = "2023/12.rs"
+
+[[bin]]
+name = "aoc2023-5"
+path = "2023/5.rs"
+
+[profile.release]
+overflow-checks = true
+
+[lints.clippy]
+pedantic = "deny"

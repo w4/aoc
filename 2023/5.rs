@@ -1,19 +1,8 @@
-#!/usr/bin/env nix-shell
-//! ```cargo
-//! [dependencies]
-//! rangemap = "1.4"
-//! strum = { version = "0.25", features = ["derive"] }
-//! nom = "7"
-//! itertools = "0.12"
-//! ```
-/*
-#!nix-shell -i rust-script -p rustc -p rust-script -p cargo
-*/
+use std::{collections::HashMap, io::Read, ops::Range, str::FromStr, time::Instant};
 
 use itertools::Itertools;
 use nom::IResult;
 use rangemap::RangeMap;
-use std::{collections::HashMap, io::Read, ops::Range, str::FromStr, time::Instant};
 
 const TRANSLATION_PATH: &[MapKind] = &[
     MapKind::Soil,

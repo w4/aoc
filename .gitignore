@@ -1,3 +1,6 @@
 result
 .tfstate
 .terraform
+target
+input
+out*
