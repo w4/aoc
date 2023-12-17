@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell --pure -i runghc -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
+#!nix-shell --pure -i "runghc -- -i../" -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
 
 import Control.Monad (guard)
 import Data.List (unfoldr)
@@ -7,9 +7,10 @@ import Text.Parsec
 import Text.Parsec.Char
 import Text.Parsec.Combinator
 import Text.Parsec.String (Parser)
+import Aoc (readAndParseStdin)
 
 main = do
-  input <- readAndParseStdin
+  input <- readAndParseStdin parseInput
   print $ part1 input
   print $ part2 input
 
@@ -58,14 +59,6 @@ buildDifferenceTable input = input : unfoldr buildRow input
     buildRow lst =
       let row = diffPairs $ zipPairs lst
        in guard (not $ null row) >> Just (row, row)
-
--- read and parse stdin
-readAndParseStdin :: IO [[Int]]
-readAndParseStdin = do
-  content <- getContents
-  case parse parseInput "" content of
-    Left parseError -> error $ show parseError
-    Right doc -> return doc
 
 -- parse each input line
 parseInput :: Parser [[Int]]

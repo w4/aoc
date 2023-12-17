@@ -1,16 +1,17 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i runghc -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
+#!nix-shell --pure -i "runghc -- -i../" -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
 
 import Control.Applicative ((<*))
 import Text.Parsec
 import Text.Parsec.Char
 import Text.Parsec.Combinator
 import Text.Parsec.String (Parser)
+import Aoc (readAndParseStdin)
 
 {- https://adventofcode.com/2023/day/6 -}
 
 main = do
-  game <- readAndParseStdin
+  game <- readAndParseStdin gameParser
   print $ part1 game
   print $ part2 game
 
@@ -36,14 +37,6 @@ scale n
 -- calculates distance travelled in a game based on velocity * time minus "button pressing time"
 distance :: Int -> Int -> Int
 distance v t = v * (t - v)
-
--- reads stdin and parses game
-readAndParseStdin :: IO [(Int, Int)]
-readAndParseStdin = do
-  content <- getContents
-  case parse gameParser "" content of
-    Left parseError -> error $ show parseError
-    Right game -> return game
 
 -- parses `Time: [n1] [n2] [n3]\nDistance:[n4] [n5] [n6]` and returns `[(n1, n4), (n2, n5), (n3, n6)]`
 gameParser :: Parser [(Int, Int)]

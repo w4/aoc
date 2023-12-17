@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i runghc -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
+#!nix-shell --pure -i "runghc -- -i../" -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
 
 import Data.List
 import qualified Data.Map as Map
@@ -7,11 +7,12 @@ import Text.Parsec
 import Text.Parsec.Char
 import Text.Parsec.Combinator
 import Text.Parsec.String (Parser)
+import Aoc (readAndParseStdin)
 
 {- https://adventofcode.com/2023/day/8 -}
 
 main = do
-  document <- readAndParseStdin
+  document <- readAndParseStdin parseDocument
   print $ part1 document
   print $ part2 document
 
@@ -40,14 +41,6 @@ traverseTreeUntil (x : xs) m n predicate elem
       Nothing -> error (show elem)
     readNext (n, _) DirectionLeft = n
     readNext (_, n) DirectionRight = n
-
--- parse entirety of stdin
-readAndParseStdin :: IO Document
-readAndParseStdin = do
-  content <- getContents
-  case parse parseDocument "" content of
-    Left parseError -> error $ show parseError
-    Right doc -> return doc
 
 -- parse entire document
 parseDocument :: Parser Document

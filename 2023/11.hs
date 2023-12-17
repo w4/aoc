@@ -1,14 +1,15 @@
 #!/usr/bin/env nix-shell
-#!nix-shell --pure -i runghc -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
+#!nix-shell --pure -i "runghc -- -i../" -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
 
 import Data.List (tails, transpose)
 import Text.Parsec
 import Text.Parsec.Char
 import Text.Parsec.Combinator
 import Text.Parsec.String (Parser)
+import Aoc (parseGrid, readAndParseStdin)
 
 main = do
-  input <- readAndParseStdin
+  input <- readAndParseStdin parseGrid
   let expansion = findEmptySpace input
   print $ part1 input expansion
   print $ part2 input expansion
@@ -57,27 +58,3 @@ findEmptySpace grid = (findX grid, findY grid)
 -- returns combinations of [a]
 pairs :: [a] -> [(a, a)]
 pairs xs = [(x, y) | (x : ys) <- tails xs, y <- ys]
-
--- read and parse stdin
-readAndParseStdin :: IO [[Bool]]
-readAndParseStdin = do
-  content <- getContents
-  case parse parseInput "" content of
-    Left parseError -> error $ show parseError
-    Right doc -> return doc
-
--- parse each input line
-parseInput :: Parser [[Bool]]
-parseInput = parseLine `sepBy` char '\n'
-
--- parse an incoming line
-parseLine :: Parser [Bool]
-parseLine = many1 parseTile
-
--- parses a single tile on the grid
-parseTile :: Parser Bool
-parseTile =
-  choice
-    [ True <$ char '#',
-      False <$ char '.'
-    ]

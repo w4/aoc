@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i runghc -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
+#!nix-shell --pure -i "runghc -- -i../" -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
 
 import Data.List
 import Data.Ord
@@ -7,12 +7,13 @@ import Text.Parsec
 import Text.Parsec.Char
 import Text.Parsec.Combinator
 import Text.Parsec.String (Parser)
+import Aoc (readAndParseStdin)
 
 {- https://adventofcode.com/2023/day/7 -}
 
 main :: IO ()
 main = do
-  games <- readAndParseStdin
+  games <- readAndParseStdin parseAllGames
   print $ part1 games
   print $ part2 games
 
@@ -65,14 +66,6 @@ getHandStrength sortedCardCount = case sortedCardCount of
 -- groups any ranks together, returning the amount of items per group. ie. [J, J, A, A, A, 1] would return [3, 2, 1]
 groupCards :: [Rank] -> [Int]
 groupCards = sortOn Down . map length . group . sort
-
--- reads stdin and parses game
-readAndParseStdin :: IO [Game]
-readAndParseStdin = do
-  content <- getContents
-  case parse parseAllGames "" content of
-    Left parseError -> error $ show parseError
-    Right game -> return game
 
 -- parses each game delimited by a newline
 parseAllGames :: Parser [Game]

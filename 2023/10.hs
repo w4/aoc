@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell --pure -i runghc -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
+#!nix-shell --pure -i "runghc -- -i../" -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
 
 import Data.List
 import Data.Maybe (listToMaybe)
@@ -8,9 +8,10 @@ import Text.Parsec
 import Text.Parsec.Char
 import Text.Parsec.Combinator
 import Text.Parsec.String (Parser)
+import Aoc (readAndParseStdin)
 
 main = do
-  input <- buildPipeLoop <$> readAndParseStdin
+  input <- buildPipeLoop <$> readAndParseStdin parseInput
   print $ part1 input
   print $ part2 input
 
@@ -97,14 +98,6 @@ findStartingPosition :: [[Tile]] -> (Int, Int)
 findStartingPosition tiles = case listToMaybe [(x, y) | (y, row) <- zip [0 ..] tiles, (x, val) <- zip [0 ..] row, val == Start] of
   Just v -> v
   Nothing -> error "input contains no starting tile"
-
--- read and parse stdin
-readAndParseStdin :: IO [[Tile]]
-readAndParseStdin = do
-  content <- getContents
-  case parse parseInput "" content of
-    Left parseError -> error $ show parseError
-    Right doc -> return doc
 
 -- parse each input line
 parseInput :: Parser [[Tile]]
