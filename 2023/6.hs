@@ -1,12 +1,12 @@
 #!/usr/bin/env nix-shell
 #!nix-shell --pure -i "runghc -- -i../" -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
 
+import Aoc (readAndParseStdin)
 import Control.Applicative ((<*))
 import Text.Parsec
 import Text.Parsec.Char
 import Text.Parsec.Combinator
 import Text.Parsec.String (Parser)
-import Aoc (readAndParseStdin)
 
 {- https://adventofcode.com/2023/day/6 -}
 

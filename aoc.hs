@@ -15,11 +15,11 @@ readAndParseStdin parser = do
 
 -- parse multiple grids
 parseMultipleGrids :: Parser [[[Bool]]]
-parseMultipleGrids = parseGrid `sepBy` string "\n\n"
+parseMultipleGrids = parseGrid `sepBy` string "\n"
 
 -- parse an entire grid
 parseGrid :: Parser [[Bool]]
-parseGrid = parseGridRow `sepBy` char '\n'
+parseGrid = parseGridRow `endBy` char '\n'
 
 -- parse an incoming grow
 parseGridRow :: Parser [Bool]

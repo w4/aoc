@@ -1,6 +1,7 @@
 #!/usr/bin/env nix-shell
 #!nix-shell --pure -i "runghc -- -i../" -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
 
+import Aoc (readAndParseStdin)
 import Data.List
 import Data.Maybe (listToMaybe)
 import qualified Data.Set as Set
@@ -8,7 +9,6 @@ import Text.Parsec
 import Text.Parsec.Char
 import Text.Parsec.Combinator
 import Text.Parsec.String (Parser)
-import Aoc (readAndParseStdin)
 
 main = do
   input <- buildPipeLoop <$> readAndParseStdin parseInput

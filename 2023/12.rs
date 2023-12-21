@@ -64,11 +64,14 @@ fn run(line: Vec<Line>, suffix: &str) -> u64 {
     let mut seen = String::new();
     out_file.read_to_string(&mut seen).unwrap();
 
-    let seen = seen
-        .lines()
-        .filter_map(|v| v.split_once(','))
-        .map(|(idx, _)| usize::from_str(idx).unwrap())
-        .collect::<Vec<_>>();
+    let (mut acc, seen) = seen.lines().filter_map(|v| v.split_once(',')).fold(
+        (0, Vec::new()),
+        |(mut acc, mut seen), (idx, val)| {
+            acc += u64::from_str(val).unwrap();
+            seen.push(usize::from_str(idx).unwrap());
+            (acc, seen)
+        },
+    );
     eprintln!("recovered state - completed {seen:?}");
 
     let (completed_send, completed_recv) = std::sync::mpsc::channel();
@@ -144,7 +147,6 @@ fn run(line: Vec<Line>, suffix: &str) -> u64 {
 
     drop(completed_send);
 
-    let mut acc = 0;
     for h in processing_handles {
         acc += h.join().unwrap();
     }

@@ -1,13 +1,13 @@
 #!/usr/bin/env nix-shell
 #!nix-shell --pure -i "runghc -- -i../" -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
 
+import Aoc (readAndParseStdin)
 import Control.Monad (guard)
 import Data.List (unfoldr)
 import Text.Parsec
 import Text.Parsec.Char
 import Text.Parsec.Combinator
 import Text.Parsec.String (Parser)
-import Aoc (readAndParseStdin)
 
 main = do
   input <- readAndParseStdin parseInput
