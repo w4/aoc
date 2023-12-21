@@ -21,7 +21,7 @@ parseMultipleGrids = parseGrid `sepBy` string "\n"
 parseGrid :: Parser [[Bool]]
 parseGrid = parseGridRow `endBy` char '\n'
 
--- parse an incoming grow
+-- parse an incoming row
 parseGridRow :: Parser [Bool]
 parseGridRow = many1 parseGridTile
 
@@ -32,3 +32,28 @@ parseGridTile =
     [ True <$ char '#',
       False <$ char '.'
     ]
+
+-- parse an entire multichoice grid
+parseMultiChoiceGrid :: Parser [[Maybe Bool]]
+parseMultiChoiceGrid = parseMultiChoiceGridRow `endBy` char '\n'
+
+-- parse an incoming row
+parseMultiChoiceGridRow :: Parser [Maybe Bool]
+parseMultiChoiceGridRow = many1 parseMultiChoiceGridTile
+
+-- parse a single multi-choice tile on a grid
+parseMultiChoiceGridTile :: Parser (Maybe Bool)
+parseMultiChoiceGridTile =
+  choice
+    [ Just True <$ char 'O',
+      Just False <$ char '#',
+      Nothing <$ char '.'
+    ]
+
+-- debugging for multi-choice tile grids
+printMultiChoiceGrid :: [[Maybe Bool]] -> IO ()
+printMultiChoiceGrid xs = putStrLn $ unlines $ (map . map) multiChoiceGridTileChar xs
+  where
+    multiChoiceGridTileChar (Just True) = 'O'
+    multiChoiceGridTileChar (Just False) = '#'
+    multiChoiceGridTileChar Nothing = '.'
