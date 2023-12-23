@@ -1,7 +1,7 @@
 #!/usr/bin/env nix-shell
 #!nix-shell --pure -i "runghc -- -i../" -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ ])"
 
-import Aoc (readAndParseStdin)
+import Aoc (readAndParseStdin, shoelace)
 import Data.List
 import Data.Maybe (listToMaybe)
 import qualified Data.Set as Set
@@ -45,14 +45,6 @@ countBoundaryPoints vertices = sum (zipWith boundaryPoints vertices (tail vertic
 -- use pick's theorem to find the interior lattice points
 picksTheorem :: Double -> Int -> Double
 picksTheorem area boundaryPoints = area - (fromIntegral boundaryPoints / 2) + 1
-
--- calculates the area for the polygon described by the set of
--- verticies using the shoelace formula
-shoelace :: [(Int, Int)] -> Double
-shoelace vertices =
-  let pairs = zip vertices $ tail vertices
-      sumProd (x1, y1) (x2, y2) = x1 * y2 - x2 * y1
-   in fromIntegral (abs . sum $ zipWith sumProd vertices (tail vertices)) / 2
 
 -- builds the list of directions that forms the pipe loop
 buildPipeLoop :: [[Tile]] -> [Direction]

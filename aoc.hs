@@ -57,3 +57,12 @@ printMultiChoiceGrid xs = putStrLn $ unlines $ (map . map) multiChoiceGridTileCh
     multiChoiceGridTileChar (Just True) = 'O'
     multiChoiceGridTileChar (Just False) = '#'
     multiChoiceGridTileChar Nothing = '.'
+
+-- calculates the area for a polygon described by the set of
+-- verticies using the shoelace formula
+shoelace :: [(Int, Int)] -> Double
+shoelace vertices =
+  let pairs = zip vertices $ tail vertices
+      sumProd (x1, y1) (x2, y2) = x1 * y2 - x2 * y1
+   in fromIntegral (abs . sum $ zipWith sumProd vertices (tail vertices)) / 2
+
