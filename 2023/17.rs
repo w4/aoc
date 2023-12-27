@@ -20,8 +20,8 @@ fn part1(input: &[Vec<u8>]) {
 
     let (distance, path) = dijkstra(input, start, end, 0, 3).unwrap();
 
-    print_grid(input, path);
-    eprintln!("part 1: {:?}", distance);
+    print_grid(input, &path);
+    eprintln!("part 1: {distance:?}");
 }
 
 fn part2(input: &[Vec<u8>]) {
@@ -30,10 +30,11 @@ fn part2(input: &[Vec<u8>]) {
 
     let (distance, path) = dijkstra(input, start, end, 4, 10).unwrap();
 
-    print_grid(input, path);
-    eprintln!("part 1: {:?}", distance);
+    print_grid(input, &path);
+    eprintln!("part 1: {distance:?}");
 }
 
+#[allow(clippy::type_complexity)]
 fn dijkstra(
     input: &[Vec<u8>],
     start: (usize, usize),
@@ -129,7 +130,7 @@ fn dijkstra(
     None
 }
 
-fn print_grid(input: &[Vec<u8>], visited: HashMap<(usize, usize), Direction>) {
+fn print_grid(input: &[Vec<u8>], visited: &HashMap<(usize, usize), Direction>) {
     for (y, a) in input.iter().enumerate() {
         for (x, v) in a.iter().enumerate() {
             match visited.get(&(x, y)) {
@@ -138,7 +139,7 @@ fn print_grid(input: &[Vec<u8>], visited: HashMap<(usize, usize), Direction>) {
                 Some(Direction::Left) => print!("<"),
                 Some(Direction::Right) => print!(">"),
                 Some(Direction::None) => print!("*"),
-                None => print!("{}", v),
+                None => print!("{v}"),
             }
         }
 
@@ -163,7 +164,7 @@ impl Ord for NodeInfo {
 
 impl PartialOrd for NodeInfo {
     fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
-        self.cost.partial_cmp(&other.cost)
+        Some(self.cmp(other))
     }
 }
 
@@ -189,9 +190,9 @@ impl Direction {
 }
 
 fn parse_input(input: &[u8]) -> Vec<Vec<u8>> {
-    std::str::from_utf8(&input)
+    std::str::from_utf8(input)
         .unwrap()
-        .split("\n")
+        .split('\n')
         .map(|v| {
             v.chars()
                 .map(|c| u8::try_from(c.to_digit(10).unwrap()).unwrap())

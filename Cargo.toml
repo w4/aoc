@@ -11,6 +11,10 @@ nom = "7"
 itertools = "0.12"
 
 [[bin]]
+name = "aoc2023-21"
+path = "2023/21.rs"
+
+[[bin]]
 name = "aoc2023-17"
 path = "2023/17.rs"
 
