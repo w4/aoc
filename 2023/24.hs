@@ -4,7 +4,7 @@ import Aoc (readAndParseStdin)
 import qualified Data.Map as Map
 import Data.Maybe (fromJust, fromMaybe)
 import Numeric.LinearAlgebra
-import Text.Parsec (char, digit, many1, spaces, (<|>), sepBy, string)
+import Text.Parsec (char, digit, many1, sepBy, spaces, string, (<|>))
 import Text.Parsec.String (Parser)
 
 main = do
