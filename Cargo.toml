@@ -26,6 +26,10 @@ path = "2023/12.rs"
 name = "aoc2023-05"
 path = "2023/05.rs"
 
+[[bin]]
+name = "aoc2024-01"
+path = "2024/01.rs"
+
 [profile.release]
 overflow-checks = true
 
