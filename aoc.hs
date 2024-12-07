@@ -65,4 +65,3 @@ shoelace vertices =
   let pairs = zip vertices $ tail vertices
       sumProd (x1, y1) (x2, y2) = x1 * y2 - x2 * y1
    in fromIntegral (abs . sum $ zipWith sumProd vertices (tail vertices)) / 2
-

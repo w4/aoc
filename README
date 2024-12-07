@@ -9,34 +9,34 @@
                             
           https://adventofcode.com/
 
-+---------------------+ +---------------------+
-|         2023        | |         2022        |
-+---------------------+ +---------------------+
-|    Day   | Language | |    Day   | Language |
-+----------+----------+ +----------+----------+
-|        1 | Haskell  | |        1 | Fortran  |
-|        2 | Haskell  | |        2 | Nix      |
-|        3 | Haskell  | |        3 | Clojure  |
-|        4 | Haskell  | |        4 | Jsonnet  |
-|        5 | Rust     | |        5 | HCL/TF   |
-|        6 | Haskell  | |        6 | Apache2  |
-|        7 | Haskell  | +---------------------+
-|        8 | Haskell  |
-|        9 | Haskell  |
-|       10 | Haskell  |
-|       11 | Haskell  |
-|       12 | Rust     |
-|       13 | Haskell  |
-|       14 | Haskell  |
-|       15 | Haskell  |
-|       16 | Haskell  |
-|       17 | Rust     |
-|       18 | Haskell  |
-|       19 | Haskell  |
-|       20 | Haskell  |
-|       21 | Rust     |
-|       22 | Haskell  |
-|       23 | Haskell  |
-|       24 | Haskell  |
-|       25 | Bash     |
-+---------------------+
++---------------------+ +---------------------+ +---------------------+
+|         2024        | |         2023        | |         2022        |
++---------------------+ +---------------------+ +---------------------+
+|    Day   | Language | |    Day   | Language | |    Day   | Language |
++----------+----------+ +----------+----------+ +----------+----------+
+|        1 | Rust     | |        1 | Haskell  | |        1 | Fortran  |
+|        2 | OCaml    | |        2 | Haskell  | |        2 | Nix      |
++---------------------+ |        3 | Haskell  | |        3 | Clojure  |
+                        |        4 | Haskell  | |        4 | Jsonnet  |
+                        |        5 | Rust     | |        5 | HCL/TF   |
+                        |        6 | Haskell  | |        6 | Apache2  |
+                        |        7 | Haskell  | +---------------------+
+                        |        8 | Haskell  |
+                        |        9 | Haskell  |
+                        |       10 | Haskell  |
+                        |       11 | Haskell  |
+                        |       12 | Rust     |
+                        |       13 | Haskell  |
+                        |       14 | Haskell  |
+                        |       15 | Haskell  |
+                        |       16 | Haskell  |
+                        |       17 | Rust     |
+                        |       18 | Haskell  |
+                        |       19 | Haskell  |
+                        |       20 | Haskell  |
+                        |       21 | Rust     |
+                        |       22 | Haskell  |
+                        |       23 | Haskell  |
+                        |       24 | Haskell  |
+                        |       25 | Bash     |
+                        +---------------------+
