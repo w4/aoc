@@ -1,4 +1,5 @@
 #![feature(binary_heap_into_iter_sorted)]
+#![allow(clippy::cast_possible_truncation)]
 use std::{cmp::Reverse, collections::BinaryHeap, io::Read};
 
 use itertools::Itertools;
