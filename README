@@ -18,8 +18,8 @@
 |        2 | OCaml    | |        2 | Haskell  | |        2 | Nix      |
 |        3 | Perl     | |        3 | Haskell  | |        3 | Clojure  |
 |        4 | Rust     | |        4 | Haskell  | |        4 | Jsonnet  |
-+---------------------+ |        5 | Rust     | |        5 | HCL/TF   |
-                        |        6 | Haskell  | |        6 | Apache2  |
+|        5 | PHP      | |        5 | Rust     | |        5 | HCL/TF   |
++---------------------+ |        6 | Haskell  | |        6 | Apache2  |
                         |        7 | Haskell  | +---------------------+
                         |        8 | Haskell  |
                         |        9 | Haskell  |
