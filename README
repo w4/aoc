@@ -21,8 +21,8 @@
 |        5 | PHP      | |        5 | Rust     | |        5 | HCL/TF   |
 |        6 | Zig      | |        6 | Haskell  | |        6 | Apache2  |
 |        7 | Rust     | |        7 | Haskell  | +---------------------+
-+---------------------+ |        8 | Haskell  |
-                        |        9 | Haskell  |
+|        8 | Rust     | |        8 | Haskell  |
++---------------------+ |        9 | Haskell  |
                         |       10 | Haskell  |
                         |       11 | Haskell  |
                         |       12 | Rust     |
