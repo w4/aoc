@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+anyhow = "1"
 arrayvec = "0.7"
 rangemap = "1.4"
 strum = { version = "0.25", features = ["derive"] }
@@ -41,6 +42,10 @@ path = "2024/07.rs"
 [[bin]]
 name = "aoc2024-08"
 path = "2024/08.rs"
+
+[[bin]]
+name = "aoc2024-13"
+path = "2024/13.rs"
 
 [profile.release]
 overflow-checks = true
