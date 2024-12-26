@@ -31,8 +31,8 @@
 |       15 | OCaml    | |       15 | Haskell  |
 |       16 | OCaml    | |       16 | Haskell  |
 |       17 | OCaml    | |       17 | Rust     |
-+---------------------+ |       18 | Haskell  |
-                        |       19 | Haskell  |
+|       18 | OCaml    | |       18 | Haskell  |
++---------------------+ |       19 | Haskell  |
                         |       20 | Haskell  |
                         |       21 | Rust     |
                         |       22 | Haskell  |
