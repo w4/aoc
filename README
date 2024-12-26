@@ -28,8 +28,8 @@
 |       12 | OCaml    | |       12 | Rust     |
 |       13 | Rust     | |       13 | Haskell  |
 |       14 | OCaml    | |       14 | Haskell  |
-+---------------------+ |       15 | Haskell  |
-                        |       16 | Haskell  |
+|       15 | OCaml    | |       15 | Haskell  |
++---------------------+ |       16 | Haskell  |
                         |       17 | Rust     |
                         |       18 | Haskell  |
                         |       19 | Haskell  |
