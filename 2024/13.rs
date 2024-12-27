@@ -93,6 +93,6 @@ fn parse_block(s: &str) -> IResult<&str, Input> {
     Ok((s, Input { buttons, prize }))
 }
 
-fn parse_input<'a>(s: &'a str) -> IResult<&'a str, Vec<Input>> {
+fn parse_input(s: &'_ str) -> IResult<&'_ str, Vec<Input>> {
     separated_list1(tag("\n"), parse_block)(s)
 }
