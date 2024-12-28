@@ -11,6 +11,7 @@ strum = { version = "0.25", features = ["derive"] }
 nom = "7"
 itertools = "0.12"
 trie-hard = "0.1"
+indexmap = "2.7"
 
 [[bin]]
 name = "aoc2023-21"
@@ -52,8 +53,9 @@ path = "2024/13.rs"
 name = "aoc2024-19"
 path = "2024/19.rs"
 
-[profile.release]
-overflow-checks = true
+[[bin]]
+name = "aoc2024-20"
+path = "2024/20.rs"
 
 [lints.clippy]
 pedantic = "deny"
