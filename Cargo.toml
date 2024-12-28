@@ -57,5 +57,9 @@ path = "2024/19.rs"
 name = "aoc2024-20"
 path = "2024/20.rs"
 
+[[bin]]
+name = "aoc2024-21"
+path = "2024/21.rs"
+
 [lints.clippy]
 pedantic = "deny"
