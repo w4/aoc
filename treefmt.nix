@@ -3,6 +3,7 @@
   projectRootFile = "flake.nix";
 
   programs = {
+    black.enable = true;
     hlint.enable = true;
     ormolu.enable = true;
     nixpkgs-fmt.enable = true;

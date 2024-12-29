@@ -36,7 +36,7 @@
 |       20 | Rust     | |       20 | Haskell  |
 |       21 | Rust     | |       21 | Rust     |
 |       22 | Rust     | |       22 | Haskell  |
-+---------------------+ |       23 | Haskell  |
-                        |       24 | Haskell  |
+|       23 | Python   | |       23 | Haskell  |
++---------------------+ |       24 | Haskell  |
                         |       25 | Bash     |
                         +---------------------+
